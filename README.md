@@ -1,2 +1,2 @@
 # p5js_template
-Blank p5.js project
+This is a blank p5.js project. See Canvas for detailed assignment directions.
