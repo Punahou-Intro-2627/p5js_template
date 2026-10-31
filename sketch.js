@@ -38,9 +38,7 @@ function keyPressed() {
   // Plant a row at the next spacing increment
   if (key === 'p') {
     let lastX = kaloRows[kaloRows.length - 1]
-    console.log(lastX)
     kaloRows.push(lastX + rowSpacing);
-    console.log(kaloRows)
   }
   // Harvest the row that was planted first
   else if (key === 'h') {
