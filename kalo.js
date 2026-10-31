@@ -25,11 +25,10 @@ function drawKaloFancy(x, y, size = 1) {
 
 function drawKaloLeafFancy(x, y, angle) {
 
-  
-
-  push();
-  translate(x, y);
-  rotate(angle);
+  // Ground shadow
+  // push();
+  // translate(x, y);
+  // rotate(angle);
 
   fill(45, 135, 65);
   stroke(65, 110, 50);
@@ -59,12 +58,14 @@ function drawKaloLeafFancy(x, y, angle) {
 
 function drawKaloSimple(x, y) {
 
-  noStroke();
-  fill(106, 87, 63);
-  ellipse(x, y + 5, 105, 18);
+  // Ground shadow
+  // noStroke();
+  // fill(106, 87, 63);
+  // ellipse(x, y + 5, 105, 18);
 
   push();
   translate(x, y);
+  scale(0.5)
 
   stroke(65, 110, 50);
   strokeWeight(4);
@@ -96,4 +97,19 @@ function drawLeafSimple(x, y, angle) {
 
   line(0, 0, 0, 45);
   pop();
+}
+
+function drawRow(kaloRows, canvasHeight, plantSpacing) {
+  // Outer loop: walk through each row stored in the array
+  for (let i = 0; i < kaloRows.length; i++) {
+    
+    // Inner loop: step from the foreground (bottom) back toward the horizon (top)
+    // As y decreases (moving up), we shift x to the right to create the angle
+    let plantCount = 0;
+    for (let y = canvasHeight - 50; y >= 100; y -= plantSpacing) {
+      let angledX = kaloRows[i] + plantCount * (plantSpacing / 2); // Shifts right each step back
+      drawKaloSimple(angledX, y);
+      plantCount++;
+    }
+  }
 }
